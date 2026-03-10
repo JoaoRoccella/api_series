@@ -1,0 +1,10 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "editor.rulers": [
+        80, 100, 120
+    ],
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.pyc": true
+    }
+}
