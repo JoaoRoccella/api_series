@@ -1,5 +1,5 @@
 [project]
-name = "api_series"
+name = "api-series"
 version = "0.1.0"
 description = "API desenvolvida com o módulo FastAPI em Python para estudo do funcionamento das APIs."
 readme = "README.md"
@@ -10,3 +10,6 @@ dependencies = [
     "python-dotenv>=1.2.2",
     "sqlalchemy>=2.0.48",
 ]
+
+[tool.fastapi]
+entry-point = "app.main:app"
