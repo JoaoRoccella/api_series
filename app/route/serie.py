@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.database import get_db
-from app.model.serie import SerieModel
-from app.schema.serie import SerieSchema
+from model.serie import SerieModel
+from schema.serie import SerieSchema
 
 serie = APIRouter()
 
