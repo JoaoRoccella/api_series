@@ -18,3 +18,31 @@ Content-Type: application/json
 ### Obtenção de todas as séries
 GET {{base_url}}/series HTTP/1.1
 Accept: application/json
+
+### Update de uma série que existe
+PUT {{base_url}}/serie/4 HTTP/1.1
+Content-Type: application/json
+
+{
+    "titulo": "Breaking Bad",
+    "descricao": "Professor e ex-aluno cozinham",
+    "ano_lancamento": 2008
+}
+
+### Tentativa de update de série inexistente
+PUT {{base_url}}/serie/99 HTTP/1.1
+Content-Type: application/json
+
+{
+    "titulo": "Breaking Bad",
+    "descricao": "Professor e ex-aluno cozinham",
+    "ano_lancamento": 2008
+}
+
+### Update de um único atributo de série
+PUT {{base_url}}/serie/4 HTTP/1.1
+Content-Type: application/json
+
+{
+    "ano_lancamento": 2010
+}
