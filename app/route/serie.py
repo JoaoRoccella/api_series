@@ -27,3 +27,32 @@ async def listar_series(db: Session = Depends(get_db)):
 # Versione
 
 # Extra: resolva o erro de importação das variáveis de ambiente detectado no módulo python-dotenv e utilize corretamente a importação com a função load_dotenv() em seu database.py
+
+
+@serie.put("/{id}")
+def atualizar_serie(id: int, dados: SerieSchema, db: Session = Depends(get_db)):
+    
+    # 1. Busca o registro no banco
+    serie = db.query(SerieModel).filter(SerieModel.id == id).first()
+
+    # 2. Verifica se a série existe
+    if not serie:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Série com ID {id} não encontrada.",
+        )
+    
+    # 3. Atualiza os campos com os novos dados
+
+    for campo, valor in dados.model_dump().items():
+        setattr(serie, campo, valor)
+        
+    # serie.titulo = dados.titulo
+    # serie.descricao = dados.descricao
+    # serie.ano_lancamento = dados.ano_lancamento
+
+    # 4. Salva as alterações
+    db.commit()
+    db.refresh(serie)
+
+    return serie
