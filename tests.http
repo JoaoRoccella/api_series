@@ -20,7 +20,7 @@ GET {{base_url}}/series HTTP/1.1
 Accept: application/json
 
 ### Atualização de uma série existente
-PUT {{base_url}}/serie/4 HTTP/1.1
+PUT {{base_url}}/serie/4/update HTTP/1.1
 Content-Type: application/json
 
 {
@@ -30,7 +30,7 @@ Content-Type: application/json
 }
 
 ### Tentativa de atualização de uma série inexistente
-PUT {{base_url}}/serie/99 HTTP/1.1
+PUT {{base_url}}/serie/99/update HTTP/1.1
 Content-Type: application/json
 
 {
@@ -38,3 +38,19 @@ Content-Type: application/json
     "descricao": "Professor e ex-aluno cozinham",
     "ano_lancamento": 2008
 }
+
+### Tentativa de atualização de um único campo de uma série existente
+PUT {{base_url}}/serie/4/update HTTP/1.1
+Content-Type: application/json
+
+{
+    "ano_lancamento": 2010
+}
+
+### Remoção de uma série existente
+DELETE {{base_url}}/serie/3/delete HTTP/1.1
+Accept: application/json
+
+### Tentativa de remoção de uma série inexistente
+DELETE {{base_url}}/serie/99/delete HTTP/1.1
+Accept: application/json
