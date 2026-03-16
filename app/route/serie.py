@@ -29,7 +29,7 @@ async def listar_series(db: Session = Depends(get_db)):
 # Extra: resolva o erro de importação das variáveis de ambiente detectado no módulo python-dotenv e utilize corretamente a importação com a função load_dotenv() em seu database.py
 
 
-@serie.put("/{id}")
+@serie.put("/serie/{id}")
 def atualizar_serie(id: int, dados: SerieSchema, db: Session = Depends(get_db)):
     
     # 1. Busca o registro no banco
@@ -43,7 +43,6 @@ def atualizar_serie(id: int, dados: SerieSchema, db: Session = Depends(get_db)):
         )
     
     # 3. Atualiza os campos com os novos dados
-
     for campo, valor in dados.model_dump().items():
         setattr(serie, campo, valor)
         
